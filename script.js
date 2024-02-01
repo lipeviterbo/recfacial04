@@ -20,13 +20,21 @@ function startWebcam() {
     });
 }
 
+// function startVideo() {
+//   navigator.getUserMedia(
+//     { video: {} },
+//     stream => cam.srcObject = stream,
+//     err => console.error(err)
+//   )
+// }
+
 function getLabeledFaceDescriptions() {
-  const labels = ["Felipe", "Messi", "Data"];
+  const labels = ["felipe", "neymar", "messi", "cristiano", "matheus"];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`./labels/${label}/${i}.png`);
+        const img = await faceapi.fetchImage(`./labels/${label}/${i}.jpg`);
         const detections = await faceapi
           .detectSingleFace(img)
           .withFaceLandmarks()
